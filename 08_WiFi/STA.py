@@ -6,13 +6,16 @@ sta_if.active()
 
 # zapnuti STA
 sta_if.active(True)
+# nacteni ESSID a Hesla ze souboru config.txt
+f = open('config.txt')
+essid = f.readline().rstrip("\n")
+password = f.readline().rstrip("\n")
+f.close()
 # nastaveni pripojeni
-essid = "A"
-password = "000AABB87DA6C"
 sta_if.connect(essid, password)
 # kotrola zda je stanice pripojena
 sta_if.isconnected()
 # kontrola nastaveni
 sta_if.ifconfig()
 # vypnuti STA
-ap_if.active(False)
+sta_if.active(False)
