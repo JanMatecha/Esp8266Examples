@@ -1,8 +1,8 @@
 
 def do_connect(config_file="config.py"):
     f = open(config_file)
-    essid = f.readline().rstrip("\n")
-    password = f.readline().rstrip("\n")
+    essid = f.readline().rstrip("\r\n")
+    password = f.readline().rstrip("\r\n")
     f.close()
 
     import network
@@ -26,3 +26,5 @@ def ip_address():
     import network
     sta_if = network.WLAN(network.STA_IF)
     return sta_if.ifconfig()[0]
+
+

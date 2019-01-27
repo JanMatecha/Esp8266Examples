@@ -1,0 +1,1 @@
+# This file is executed on every boot (including wake-boot from deepsleep)#import esp#esp.osdebug(None)import wifi# pripojeni k wifi# predpoklada konfiguracni soubor "config.py", ve kterem je na prvnim radku essid a na druhem heslowifi.do_connect(config_file="config.py")import gcimport webreplwebrepl.start()gc.collect()
