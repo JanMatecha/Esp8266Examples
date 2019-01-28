@@ -1,4 +1,5 @@
 import socket
+import time
 html = """<!DOCTYPE html>
 <html>
     <head> <title>ESP8266 Pins</title> </head>
@@ -33,8 +34,10 @@ while True:
     # response = html % '\n'.join(rows)
     # response = html % "ABC"
     print("tady")
-    # cl.send(html.encode('utf-8'))
-    cl.send("HTTP/1.0 200 OK\r\n\r\n<h1>Hallo Michael, how are you?</h1>\r\n".encode('utf-8'))
+    cl.send(html.encode('utf-8'))
+    # cl.send("HTTP/1.0 200 OK\r\n\r\n<h1>Hallo Michael, how are you?</h1>\r\n".encode('utf-8'))
     print("tady2")
+    time.sleep(1)
+    print("tady3")
     cl.close()
 
