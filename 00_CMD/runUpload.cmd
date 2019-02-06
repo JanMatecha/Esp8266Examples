@@ -1,5 +1,7 @@
-SET PORT=COM4
-SET JMENO=filesUpload.txt
+rem SET PORT=COM4
+FOR /F %%G IN (COM.txt) DO set  PORT=%%G
+
+SET JMENO=filesUploaded.txt
 
 dir /b *.py > %JMENO%
 

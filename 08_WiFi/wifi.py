@@ -1,8 +1,8 @@
 
 def do_connect(config_file="config.py"):
     f = open(config_file)
-    essid = f.readline().rstrip("\n")
-    password = f.readline().rstrip("\n")
+    essid = f.readline().rstrip("\r\n")
+    password = f.readline().rstrip("\r\n")
     f.close()
 
     import network
@@ -22,7 +22,22 @@ def do_disconnect():
     sta_if.active(False)
 
 
-def ip_address():
+def get_ip():
     import network
     sta_if = network.WLAN(network.STA_IF)
     return sta_if.ifconfig()[0]
+
+
+def get_mac():
+    import network
+    import ubinascii
+    ap_if = network.WLAN(network.AP_IF)
+    return ubinascii.hexlify(ap_if.config("mac"))
+
+
+def get_essid_mac():
+    import network
+    import ubinascii
+    ap_if = network.WLAN(network.AP_IF)
+    return b"MicroPython-%s" % ubinascii.hexlify(ap_if.config("mac")[-3:])
+

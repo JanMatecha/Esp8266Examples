@@ -1,5 +1,7 @@
-SET PORT=COM4
-SET JMENO=soubory.txt
+rem SET PORT=COM4
+FOR /F %%G IN (COM.txt) DO set  PORT=%%G
+
+SET JMENO=filesDeleted.txt
 
 ampy -p %PORT% ls > %JMENO%
 

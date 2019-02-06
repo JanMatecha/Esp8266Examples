@@ -1,5 +1,7 @@
-SET PORT=COM4
-SET JMENO=filesDownload.txt
+rem SET PORT=COM4
+FOR /F %%G IN (COM.txt) DO set  PORT=%%G
+
+SET JMENO=filesDownloaded.txt
 
 ampy -p %PORT% ls > %JMENO%
 
