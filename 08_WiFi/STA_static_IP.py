@@ -6,16 +6,20 @@ sta_if.active()
 
 # zapnuti STA
 sta_if.active(True)
-# nacteni ESSID a Hesla ze souboru config.txt
-f = open('config.txt')
-essid = f.readline().rstrip("\r\n")
-password = f.readline().rstrip("\r\n")
-f.close()
+ESSID = "AP"
+PASSWORD = "micropythoN"
+
 # nastaveni pripojeni
-sta_if.connect(essid, password)
+sta_if.connect(ESSID, PASSWORD)
 # kotrola zda je stanice pripojena
 sta_if.isconnected()
 # kontrola nastaveni
 sta_if.ifconfig()
-# vypnuti STA
-sta_if.active(False)
+# nastavine staticke IP adresy
+a = sta_if.ifconfig()
+b = list(a)
+b[0] = '192.168.1.12'
+c = tuple(b)
+sta_if.ifconfig(c)
+# kontrola nastaveni
+sta_if.ifconfig()
